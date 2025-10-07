@@ -1,4 +1,4 @@
-package com.ecommerce.Infrastructure.messaging;
+package com.ecommerce.infrastructure.messaging;
 
 import com.ecommerce.domain.event.UserRegisteredEvent;
 import com.ecommerce.Infrastructure.EmailNotificationService;

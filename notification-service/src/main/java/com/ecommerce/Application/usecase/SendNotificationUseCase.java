@@ -3,7 +3,7 @@ package com.ecommerce.Application.usecase;
 import com.ecommerce.Application.messaging.NotificationService;
 import com.ecommerce.domain.model.Notification;
 import com.ecommerce.domain.orderValue.NotificationType;
-import com.ecommerce.Infrastructure.dto.UserRegisteredEvent;
+import com.ecommerce.domain.event.UserRegisteredEvent;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
