@@ -1,0 +1,39 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8080:8080"
+    environment:
+      MP_MESSAGING_CONNECTOR_SMALLRYE_RABBITMQ_HOST: rabbitmq
+    depends_on:
+      - rabbitmq
+
+  order-service:
+    build:
+      context: ./order-service
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8082:8080"
+    environment:
+      MP_MESSAGING_CONNECTOR_SMALLRYE_RABBITMQ_HOST: rabbitmq
+    depends_on:
+      - rabbitmq
+
+  notification-service:
+    build:
+      context: ./notification-service
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8081:8080"
+    environment:
+      MP_MESSAGING_CONNECTOR_SMALLRYE_RABBITMQ_HOST: rabbitmq
+    depends_on:
+      - rabbitmq
